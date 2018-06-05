@@ -1,8 +1,8 @@
 const url = require('url')
 const fs = require('fs')
 const path = require('path')
-const database = require('../config/database')
 const qs = require('querystring')
+const Product = require('../models/Product')
 
 module.exports = (req, res) => {
     req.pathname = req.pathname || url.parse(req.url).pathname
@@ -25,13 +25,13 @@ module.exports = (req, res) => {
                 'Content-Type' : 'text/html'
             })
 
-            //Get products from Db and insert them in the view
-            let products = database.products.getAll()
+            //Get products from Db and insert them in the view            
             let queryData = qs.parse(url.parse(req.url).query)
-            if(queryData.query){
-                products = products.filter(p => p.name.toString().toLowerCase().includes(queryData.query.toString().toLocaleLowerCase()))
-            }
-            let content = ''
+            Product.find().then((products) => {
+                if(queryData.query){
+                    products = products.filter(p => p.name.toString().toLowerCase().includes(queryData.query.toString().toLocaleLowerCase()))
+                }
+                let content = ''
 
             for(let product of products){
                 content += 
@@ -46,6 +46,7 @@ module.exports = (req, res) => {
     
             res.write(html)
             res.end()
+            })                      
         })   
     } else {
         return true
