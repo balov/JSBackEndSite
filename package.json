@@ -9,6 +9,8 @@
   "author": "AB",
   "license": "ISC",
   "dependencies": {
+    "express": "4.16.3",
+    "formidable": "1.2.1",
     "mongoose": "^5.1.4",
     "multiparty": "^4.1.4",
     "shortid": "^2.2.8"
