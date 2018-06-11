@@ -185,3 +185,11 @@ textarea.input-field {
 footer {
   padding: 15px;
 }
+
+.error-msg {
+  color: #c71c22
+}
+
+.success-msg {
+  color: #73a839
+}

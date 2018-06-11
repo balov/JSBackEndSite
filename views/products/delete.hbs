@@ -1,0 +1,19 @@
+<main>
+    <h2>Delete Product</h2>
+    <img src="{{product.image}}">
+    <form class="form center-form" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" value="{{product.name}}" class="input-field" readonly/>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" type="text" class="input-field" readonly>{{product.description}}</textarea>
+      </div>
+
+      <div class="form-group">
+        <input class="btn btn-danger form-btn" type="submit" value="Delete">
+      </div>
+    </form>
+</main>
